@@ -74,7 +74,7 @@ public void Signin_Check(String login_ID, String password, String valid) throws 
             Thread.sleep(3000);
             boolean Alert_Bolean =Alert_Login.isDisplayed();
             Assert.assertEquals(true, Alert_Bolean);
-            System.out.println("Test OK");
+            
         	
         }
         
