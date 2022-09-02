@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
+  <parameter name="Browser" value="Chrome"/>
+  <listeners>
+    <listener class-name="Extend_report.ExtentReporterNG"/>
+    <listener class-name="Listners.ItestLisnter"/>
+  </listeners>
+  <test thread-count="5" name="Test(failed)">
+    <classes>
+      <class name="Tese_Case.Log_In_test">
+        <methods>
+          <include name="TearDown"/>
+          <include name="TC_1_Login_Test" invocation-numbers="1 2 3 4 5"/>
+          <include name="Intial_Sign_In_test"/>
+        </methods>
+      </class> <!-- Tese_Case.Log_In_test -->
+    </classes>
+  </test> <!-- Test(failed) -->
+</suite> <!-- Failed suite [Suite] -->
