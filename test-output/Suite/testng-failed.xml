@@ -8,13 +8,12 @@
   </listeners>
   <test thread-count="5" name="Test(failed)">
     <classes>
-      <class name="Tese_Case.Log_In_test">
+      <class name="Test_Case.Flight_Status_Test">
         <methods>
-          <include name="TearDown"/>
-          <include name="TC_1_Login_Test" invocation-numbers="1 2 3 4 5"/>
-          <include name="Intial_Sign_In_test"/>
+          <include name="Intialization_Flight_Status"/>
+          <include name="TC_1_Flight_Status_Test" invocation-numbers="1"/>
         </methods>
-      </class> <!-- Tese_Case.Log_In_test -->
+      </class> <!-- Test_Case.Flight_Status_Test -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

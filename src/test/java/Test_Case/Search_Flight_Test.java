@@ -1,4 +1,4 @@
-package Tese_Case;
+package Test_Case;
 
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
