@@ -3,17 +3,18 @@
 <suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
   <parameter name="Browser" value="Chrome"/>
   <listeners>
-    <listener class-name="Extend_report.ExtentReporterNG"/>
-    <listener class-name="Listners.ItestLisnter"/>
+    <listener class-name="Extend_report.ExtentReport"/>
   </listeners>
   <test thread-count="5" name="Test(failed)">
     <classes>
-      <class name="Test_Case.Flight_Status_Test">
+      <class name="Test_Case.Log_In_test">
         <methods>
-          <include name="Intialization_Flight_Status"/>
-          <include name="TC_1_Flight_Status_Test" invocation-numbers="1"/>
+          <include name="Intial_Sign_In_test"/>
+          <include name="TC_1_Login_Test" invocation-numbers="0"/>
+          <include name="TC_2_Login_Test" invocation-numbers="0"/>
+          <include name="TearDown"/>
         </methods>
-      </class> <!-- Test_Case.Flight_Status_Test -->
+      </class> <!-- Test_Case.Log_In_test -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

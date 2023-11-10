@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.URL;
+import java.util.HashMap;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
@@ -13,18 +15,23 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
-
+import org.testng.ITestNGMethod;
 
 import Webevents.Webevent_Listners;
-import io.github.bonigarcia.wdm.WebDriverManager;
+
 
 public class Base_Class {
 
-	public static WebDriver driver;
+public static WebDriver driver;
 	public static Properties propFile;
-	
+	//public static RemoteWebDriver driver = null;
 	
 	public void Intialization(String Browser) throws Throwable {
 		    propFile = new Properties();
@@ -32,16 +39,43 @@ public class Base_Class {
 			FileInputStream file = new FileInputStream(".\\Config_File\\Config.properties");
 			propFile.load(file);
 	
-		
+			
 		
 		
 		if(Browser.contentEquals("Chrome")) {
-		WebDriverManager.chromedriver().setup();
-		driver = new ChromeDriver();
-		
-		
+
+			  //WebDriverManager.chromedriver().setup();
+			
+
+			    ChromeOptions options = new ChromeOptions();
+			   
+
+			    options.addArguments("--remote-allow-origins=*");
+
+			    driver = new ChromeDriver(options);
+			
+			
+			/*
+			 * String username = "akashsaha17051997"; String access_key =
+			 * "bH5WLyFH8NMO9ueGz4SkdvMtZcMvuzXeuyPvFCALYBNT0BdmrS";
+			 * 
+			 * 
+			 * DesiredCapabilities capabilities = new DesiredCapabilities();
+			 * capabilities.setCapability("browserName", "MicrosoftEdge");
+			 * capabilities.setCapability("browserVersion", "119.0"); HashMap<String,
+			 * Object> ltOptions = new HashMap<String, Object>(); ltOptions.put("username",
+			 * "akashsaha17051997"); ltOptions.put("accessKey",
+			 * "bH5WLyFH8NMO9ueGz4SkdvMtZcMvuzXeuyPvFCALYBNT0BdmrS");
+			 * ltOptions.put("visual", true); ltOptions.put("video", true);
+			 * ltOptions.put("platformName", "Windows 10"); ltOptions.put("resolution",
+			 * "1920x1080"); ltOptions.put("build", "testNGDemo"); ltOptions.put("project",
+			 * "test"); ltOptions.put("name", "Demo"); ltOptions.put("selenium_version",
+			 * "3.141.59"); capabilities.setCapability("LT:Options", ltOptions); driver =
+			 * new RemoteWebDriver (new URL ("https://" + username + ":" + access_key +
+			 * "@hub.lambdatest.com/wd/hub"), capabilities);
+			 */
 		}else if (Browser.contentEquals("Firefox")) {
-			  WebDriverManager.firefoxdriver().setup();
+			  //WebDriverManager.firefoxdriver().setup();
 				driver = new FirefoxDriver();
 	    }else System.out.println("Give Correct Browser Name");
 		
@@ -49,10 +83,11 @@ public class Base_Class {
 		String URL = propFile.getProperty("URL");
 		System.out.println(URL);
 		System.out.println(Browser);
-		EventFiringWebDriver E_driver = new EventFiringWebDriver(driver);
-		Webevent_Listners events_Listner = new Webevent_Listners();
-		E_driver.register(events_Listner);
-		driver= E_driver;
+		/*
+		 * EventFiringWebDriver E_driver = new EventFiringWebDriver(driver);
+		 * Webevent_Listners events_Listner = new Webevent_Listners();
+		 * E_driver.register(events_Listner); driver= E_driver;
+		 */
 		
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -64,11 +99,14 @@ public class Base_Class {
 	
 	
 	
-	public void onTestfailure(String failed_Method) throws Throwable {
+	public static  String onTestfailure(String path) throws Throwable {
 		
 		File file = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(file, new File (".\\Failed_Screenshots\\"+failed_Method+".jpg" ));
+		File DestinationFile = new File(".\\Failed_Screenshots\\"+path+".jpg" );
+		String AbsoluteFile = DestinationFile.getAbsolutePath();
+		FileUtils.copyFile(file, DestinationFile);
 		
+		return AbsoluteFile;
 	}
 
 
