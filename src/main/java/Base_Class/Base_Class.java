@@ -33,6 +33,39 @@ public static WebDriver driver;
 	public static Properties propFile;
 	//public static RemoteWebDriver driver = null;
 	
+	
+	// Anguler project locators
+	
+	//ByAngular.model(“attribute value”);
+	//ByAngular.binding(“attribute value”);
+	//ByAngular.buttonText(“attribute value”);
+	//ByAngular.exactBinding(“attribute value”);
+	//ByAngular.exactRepeater(“attribute value”);
+	//ByAngular.options(“attribute value”);
+	//ByAngular.partialButtonText(“attribute value”);
+	//ByAngular.repeater(“attribute value”);
+	//ByAngular.exactRepeater(“attribute value”);
+	
+	
+	
+	//WebDriver driver=null;
+	//NgWebDriverngDriver=null;
+	//WebDriverManager.chromedriver().version("81.0.4044.138").setup();
+	//driver = new ChromeDriver();
+	//driver.get("http://juliemr.github.io/protractor-demo/");
+	//ngDriver = new NgWebDriver((JavascriptExecutor) driver);
+	//driver.findElement(ByAngular.model("first")).sendKeys("2");
+	//driver.findElement(ByAngular.model("second")).sendKeys("2");
+	//driver.findElement(ByAngular.buttonText ("Go!")).click();
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	public void Intialization(String Browser) throws Throwable {
 		    propFile = new Properties();
 		
