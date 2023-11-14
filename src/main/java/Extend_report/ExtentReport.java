@@ -71,6 +71,7 @@ public class ExtentReport extends Base_Class implements ITestListener{
 
 	public void onFinish(ITestContext context) {
 		extent.flush();
+		
 	}
 
 

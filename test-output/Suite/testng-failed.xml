@@ -4,6 +4,7 @@
   <parameter name="Browser" value="Chrome"/>
   <listeners>
     <listener class-name="Extend_report.ExtentReport"/>
+    <listener class-name="Listners.MethodIntercept"/>
   </listeners>
   <test thread-count="5" name="Test(failed)">
     <classes>
@@ -11,7 +12,6 @@
         <methods>
           <include name="Intial_Sign_In_test"/>
           <include name="TC_1_Login_Test" invocation-numbers="0"/>
-          <include name="TC_2_Login_Test" invocation-numbers="0"/>
           <include name="TearDown"/>
         </methods>
       </class> <!-- Test_Case.Log_In_test -->

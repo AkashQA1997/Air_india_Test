@@ -4,6 +4,8 @@
 
       	<listeners>
 		 <listener class-name="Extend_report.ExtentReport" />
+		 <listener class-name="Listners.MethodIntercept" />
+		 
 		 
         </listeners>
          <parameter name = "Browser" value = "Chrome" />
