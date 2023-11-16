@@ -1,5 +1,7 @@
 package Test_Case;
 
+import java.util.Map;
+
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Parameters;
@@ -25,17 +27,17 @@ public static Excel_Data FlightStatusXlx;
 
 @DataProvider(name = "Fligh_Status_Data")
 
- public Object[][] FlightStatusData() throws Throwable{
-	Object obj[][] =  Excel_Data.Excel_Read("Flight_Status");
+ public Object[] FlightStatusData() throws Throwable{
+	Object obj[] =  Excel_Data.Excel_Read("Flight_Status");
 	return obj;
 }
 
 
 
 @Test (priority = 1, dataProvider = "Fligh_Status_Data")
-public void TC_1_Flight_Status_Test(String Flight_Number, String From_Date, String From_MMYY, String Valid) {
+public void TC_1_Flight_Status_Test(Map<String, String> map) {
 	
-	FlightStatus_Obj.Fligh_Status_Check(Flight_Number, From_Date, From_MMYY, Valid);
+	FlightStatus_Obj.Fligh_Status_Check(map);
 	
 	
 	

@@ -3,6 +3,7 @@ package Page_Object;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.openqa.selenium.WebElement;
@@ -41,7 +42,7 @@ public Login_PageObject() {
 	
 	
 	
-public void Signin_Check(String login_ID, String password, String valid) throws InterruptedException 
+public void Signin_Check(Map<String, String> map) throws InterruptedException 
 
       {
 		
@@ -54,10 +55,10 @@ public void Signin_Check(String login_ID, String password, String valid) throws 
         System.out.println(Arr_Window [1]);
         driver.switchTo().window(Arr_Window [1]);
         
-        if(valid.equals("Yes")) {
+        if(map.get("valid").equals("Yes")) {
         	
-            User_name.sendKeys(login_ID);
-            Password.sendKeys(password);
+            User_name.sendKeys(map.get("login_ID"));
+            Password.sendKeys(map.get("password"));
             Sign_in_button.click();
             Thread.sleep(3000);
             boolean Acoount_Bolean =Account_Summary.isDisplayed();
@@ -66,10 +67,10 @@ public void Signin_Check(String login_ID, String password, String valid) throws 
         	
         }
         Thread.sleep(2000);
-        if(valid.equals("No")) {
+        if(map.get("valid").equals("No")) {
         	
-            User_name.sendKeys(login_ID);
-            Password.sendKeys(password);
+            User_name.sendKeys(map.get("login_ID"));
+            Password.sendKeys(map.get("password"));
             Sign_in_button.click();
             Thread.sleep(3000);
             boolean Alert_Bolean =Alert_Login.isDisplayed();

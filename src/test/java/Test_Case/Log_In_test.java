@@ -1,5 +1,7 @@
 package Test_Case;
 
+import java.util.Map;
+
 import org.openqa.selenium.JavascriptExecutor;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
@@ -31,22 +33,22 @@ public class Log_In_test extends Base_Class {
 
 	@Test(priority =1, dataProvider = "LoginData")
 
-	public void TC_1_Login_Test(String Login_ID, String Password, String Valid ) throws InterruptedException {
-		Login_object.Signin_Check( Login_ID, Password , Valid );
+	public void TC_1_Login_Test(Map<String, String> map ) throws InterruptedException {
+		Login_object.Signin_Check(map);
 		//Status = "passed";
 
 	}
 	@Test(priority =2, dataProvider = "LoginData")
-	public void TC_2_Login_Test(String Login_ID, String Password, String Valid ) throws InterruptedException {
-		Login_object.Signin_Check( Login_ID, Password , Valid );
+	public void TC_2_Login_Test(Map<String, String> map ) throws InterruptedException {
+		Login_object.Signin_Check( map );
 		//Status = "passed";
 
 	}
 
 	@DataProvider (name = "LoginData")
-	public Object[][] XlsData() throws Throwable {
+	public Object[] XlsData() throws Throwable {
 
-		Object data[][] = Excel_Data.Excel_Read("Login_sheet");
+		Object data[] = Excel_Data.Excel_Read("Login_sheet");
 		return data;
 
 	}

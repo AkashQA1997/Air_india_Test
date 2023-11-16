@@ -2,6 +2,7 @@ package Page_Object;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -46,7 +47,7 @@ public Flight_Status_PageObject() {
 }
 	
 
-public void Fligh_Status_Check(String Flight_Number, String From_Date, String From_MMYY, String Valid) {
+public void Fligh_Status_Check(Map<String, String> map) {
 	
 	Flight_Status.click();
 	From_date.click();
